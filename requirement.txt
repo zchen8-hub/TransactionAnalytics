@@ -1,0 +1,7 @@
+pyngrok
+streamlit
+matplotlib >= 3.4.3
+numpy
+pandas
+wordcloud
+Flask
