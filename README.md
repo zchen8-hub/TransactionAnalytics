@@ -27,5 +27,13 @@ style='width:200px;height:200px'>
 ## Classification:
 <br>I collected five useful attributes, category_info,payment_channel and date info, also merchant_name and amount, to use this information to predict which account the transaction belongs to. For the 5 fold cross-validations, it reaches 87.5% of accuracy</br>
 
+## How to use:
+
+```bash
+pip install -r requirements.txt
+python start.py     #under flask-server
+```
+After that, access url localhost:8090 in your browser for transaction analytics and can modify the data by replacing input.json.
+<br></br>
 
 For the presentation of the results, I integrated the results with streamlit, an open resource API to generate an interactive and dynamic report about data visualization.
