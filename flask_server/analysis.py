@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import confusion_matrix
 from wordcloud import WordCloud
+from _datetime import datetime
 
 class PaymentMetaConstants:
     REFERENCE_NUMBER = 'reference_number'
@@ -121,7 +122,7 @@ def numof_category(df_valid):
     draw_barh(labels, cat_num, x_label_name)
 
 def amount_disp_per_cat(df_valid):
-    amt_sum_by_cat = trans_df_valid[['category_str', 'amount']].groupby(by = 'category_str').sum()
+    amt_sum_by_cat = df_valid[['category_str', 'amount']].groupby(by = 'category_str').sum()
     draw_barh(amt_sum_by_cat.index,amt_sum_by_cat['amount'], 'Total Amount for Each Category')
 
 def payment_channel_disp(df_valid):
@@ -134,10 +135,10 @@ def precess_date(df_valid):
     df_valid.iloc[i,7] = datetime.strptime(df_valid.iloc[i,7],'%Y-%m-%d')
 
 def month_expense_per_cat(df_valid):
-    print(transations_csv.groupby(by=['category_id',pd.Grouper(key='date',freq='M')]).sum())
+    print(df_valid.groupby(by=['category_id',pd.Grouper(key='date',freq='M')]).sum())
 
 def month_expense_per_acc(df_valid):
-    print(transations_csv.groupby(by=['account_id',pd.Grouper(key='date',freq='M')]).sum())
+    print(df_valid.groupby(by=['account_id',pd.Grouper(key='date',freq='M')]).sum())
 
 def predict_acc_with_trans(transations_csv):
     x = pd.DataFrame()
